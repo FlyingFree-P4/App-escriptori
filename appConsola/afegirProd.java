@@ -1,6 +1,6 @@
 package appConsola;
 import java.util.Scanner;
-
+import productes.*;
 public class afegirProd {
     
     private static void afegirProd() {
@@ -9,6 +9,9 @@ public class afegirProd {
         int opcio;
         boolean sortir = false;
 
+        while (!sortir) {
+            
+        
         System.out.println("_____________________________");
         System.out.println("|********FlyingFree*********|");
         System.out.println("_____________________________");
@@ -23,39 +26,41 @@ public class afegirProd {
         System.out.println("| Gestiona els productes    |");
         System.out.println("-----------------------------");
 
-        if (!teclat.hasNextInt()) {
-            System.out.println("Has d'introduÃ¯r un nÂº com a opciÃ³");
-            teclat.next();
-        } else {
-            opcio = teclat.nextInt();
+            if (!teclat.hasNextInt()) {
+                System.out.println("Has d'introduÃ¯r un nÂº com a opciÃ³");
+                teclat.next();
+            } else {
+                opcio = teclat.nextInt();
 
-            switch (opcio) {
-                case 1:
-                    System.out.println("Gestiona els vols");
-                    break;
-            
-                case 2:
-                    System.out.println("Gestiona els hotels");    
-                    break;
+                switch (opcio) {
+                    case 1:
+                        vols.getValue();
+                        break;
+                
+                    case 2:
+                        hotels.getValue();
+                        break;
 
-                case 3:
-                    System.out.println("Gestiona els restaurants");
-                    break;
-                   
-                case 4:
-                    System.out.println("Gestiona les excursions");    
+                    case 3:
+                        restaurants.getValue();
+                        break;
+                    
+                    case 4:
+                        excursions.getValue(); 
+                        break;
+                    case 5:
+                        System.out.println("Has tornat al menu");
+                        sortir = true;
+                        break;
+                    default:
+                        System.out.println("OpciÃ³ incorrecta.");
+                        break;
+                }
 
-                case 5:
-                    System.out.println("Has tornat al menu");
-                    sortir = true;
-                    break;
-                default:
-                    System.out.println("OpciÃ³ incorrecta.");
-                    break;
             }
-
         }
-
     }   
-
+    public static void getValue() {
+        afegirProd();
+    }
 }
