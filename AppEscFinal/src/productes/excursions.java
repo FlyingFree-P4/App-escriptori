@@ -1,68 +1,54 @@
-package appConsola;
+package productes;
 
 import java.util.Scanner;
-import productes.*;
 
-public class afegirProd {
-
-    private static void afegirProd() {
-
+public class excursions {
+    private static void excursions() {
         Scanner teclat = new Scanner(System.in);
         int opcio;
         boolean sortir = false;
 
         while (!sortir) {
-
             System.out.println("_____________________________");
             System.out.println("|********FlyingFree*********|");
             System.out.println("_____________________________");
-            System.out.println("|****Gestionar productes****|");
-            System.out.println("| 1. Vols                   |");
-            System.out.println("| 2. Hotels                 |");
-            System.out.println("| 3. Restaurants            |");
-            System.out.println("| 4. Excursions             |");
+            System.out.println("|********EXCURSIONS*********|");
+            System.out.println("| 1. Afegeix excursions     |");
+            System.out.println("| 2. Gestiona els excursions|");
             System.out.println("|                           |");
-            System.out.println("| 5. Tornar al menu         |");
+            System.out.println("| 3. Tornar enrere          |");
             System.out.println("|                           |");
             System.out.println("| Gestiona els productes    |");
             System.out.println("-----------------------------");
 
             if (!teclat.hasNextInt()) {
-                System.out.println("Has d'introduÃ¯r un nÂº com a opciÃ³");
+                System.out.println("Has d'introduir un nº com a opció.");
                 teclat.next();
             } else {
                 opcio = teclat.nextInt();
 
                 switch (opcio) {
                     case 1:
-                        vols.getValue();
+                        System.out.println("Afegeix nous excursions.");
                         break;
 
                     case 2:
-                        hotels.getValue();
+                        System.out.println("Gestiona els excursions.");
                         break;
 
                     case 3:
-                        restaurants.getValue();
-                        break;
-
-                    case 4:
-                        excursions.getValue();
-                        break;
-                    case 5:
-                        System.out.println("Has tornat al menu");
+                        System.out.println("Has tornat enrere.");
                         sortir = true;
                         break;
                     default:
-                        System.out.println("OpciÃ³ incorrecta.");
-                        break;
+                        System.out.println("Opció incorrecta");
                 }
-
             }
+
         }
     }
 
     public static void getValue() {
-        afegirProd();
+        excursions();
     }
 }

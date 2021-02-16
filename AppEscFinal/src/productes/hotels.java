@@ -2,8 +2,8 @@ package productes;
 
 import java.util.Scanner;
 
-public class excursions {
-    private static void excursions() {
+public class hotels {
+    private static void hotels() {
         Scanner teclat = new Scanner(System.in);
         int opcio;
         boolean sortir = false;
@@ -12,9 +12,9 @@ public class excursions {
             System.out.println("_____________________________");
             System.out.println("|********FlyingFree*********|");
             System.out.println("_____________________________");
-            System.out.println("|********EXCURSIONS*********|");
-            System.out.println("| 1. Afegeix excursions     |");
-            System.out.println("| 2. Gestiona els excursions|");
+            System.out.println("|**********HOTELS***********|");
+            System.out.println("| 1. Afegeix hotels         |");
+            System.out.println("| 2. Gestiona els hotels    |");
             System.out.println("|                           |");
             System.out.println("| 3. Tornar enrere          |");
             System.out.println("|                           |");
@@ -29,11 +29,11 @@ public class excursions {
 
                 switch (opcio) {
                     case 1:
-                        System.out.println("Afegeix nous excursions.");
+                        System.out.println("Afegeix nous hotels.");
                         break;
 
                     case 2:
-                        System.out.println("Gestiona els excursions.");
+                        System.out.println("Gestiona els hotels.");
                         break;
 
                     case 3:
@@ -42,7 +42,6 @@ public class excursions {
                         break;
                     default:
                         System.out.println("Opció incorrecta");
-                        break;
                 }
             }
 
@@ -50,6 +49,6 @@ public class excursions {
     }
 
     public static void getValue() {
-        excursions();
+        hotels();
     }
 }

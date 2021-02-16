@@ -1,6 +1,7 @@
 package appConsola;
 
 import java.util.Scanner;
+import ofertes.*;
 
 public class menu {
     public static void main(String[] args) {
@@ -17,8 +18,9 @@ public class menu {
             System.out.println("|*******Menu principal******|");
             System.out.println("| 1. Productes              |");
             System.out.println("| 2. Factures               |");
-            System.out.println("| 3. Sortir                 |");
+            System.out.println("| 3. Ofertes                |");
             System.out.println("|                           |");
+            System.out.println("| 4. Surt                   |");
             System.out.println("|Tria una de les 3 opcions: |");
             System.out.println("-----------------------------");
             if (!teclat.hasNextInt()) {
@@ -30,7 +32,7 @@ public class menu {
                 switch (opcio) {
 
                     case 1:
-                        afegirProd.getValue();
+                        gestProd.getValue();
                         break;
 
                     case 2:
@@ -38,10 +40,13 @@ public class menu {
                         break;
 
                     case 3:
-                        System.out.println("Has triat l'opció 3, adeu!");
-                        sortir = true;
+                        ofertes.getValue();
                         break;
 
+                    case 4:
+                        System.out.println("Has triat l'opció 4, adeu!");
+                        sortir = true;
+                        break;
                     default:
                         System.out.println("Opció incorrecta.");
 

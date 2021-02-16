@@ -1,9 +1,9 @@
-package productes;
+package ofertes;
 
 import java.util.Scanner;
 
-public class hotels {
-    private static void hotels() {
+public class ofertes {
+    private static void ofertes() {
         Scanner teclat = new Scanner(System.in);
         int opcio;
         boolean sortir = false;
@@ -12,9 +12,9 @@ public class hotels {
             System.out.println("_____________________________");
             System.out.println("|********FlyingFree*********|");
             System.out.println("_____________________________");
-            System.out.println("|**********HOTELS***********|");
-            System.out.println("| 1. Afegeix hotels         |");
-            System.out.println("| 2. Gestiona els hotels    |");
+            System.out.println("|*********OFERTES***********|");
+            System.out.println("| 1. Afegeix nova oferta    |");
+            System.out.println("| 2. Borra una oferta       |");
             System.out.println("|                           |");
             System.out.println("| 3. Tornar enrere          |");
             System.out.println("|                           |");
@@ -29,11 +29,11 @@ public class hotels {
 
                 switch (opcio) {
                     case 1:
-                        System.out.println("Afegeix nous hotels.");
+                        System.out.println("Afegeix nova oferta.");
                         break;
 
                     case 2:
-                        System.out.println("Gestiona els hotels.");
+                        System.out.println("Borra una oferta.");
                         break;
 
                     case 3:
@@ -42,7 +42,6 @@ public class hotels {
                         break;
                     default:
                         System.out.println("Opció incorrecta");
-                        break;
                 }
             }
 
@@ -50,6 +49,6 @@ public class hotels {
     }
 
     public static void getValue() {
-        hotels();
+        ofertes();
     }
 }

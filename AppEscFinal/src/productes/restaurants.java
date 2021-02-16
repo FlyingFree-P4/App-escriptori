@@ -2,8 +2,8 @@ package productes;
 
 import java.util.Scanner;
 
-public class vols {
-    private static void vols() {
+public class restaurants {
+    private static void restaurants() {
         Scanner teclat = new Scanner(System.in);
         int opcio;
         boolean sortir = false;
@@ -12,9 +12,9 @@ public class vols {
             System.out.println("_____________________________");
             System.out.println("|********FlyingFree*********|");
             System.out.println("_____________________________");
-            System.out.println("|***********VOLS************|");
-            System.out.println("| 1. Afegeix Vols           |");
-            System.out.println("| 2. Gestiona els vols      |");
+            System.out.println("|********RESTAURANTS********|");
+            System.out.println("| 1. Afegeix restaurants    |");
+            System.out.println("| 2. Gestiona els restaurants|");
             System.out.println("|                           |");
             System.out.println("| 3. Tornar enrere          |");
             System.out.println("|                           |");
@@ -29,11 +29,11 @@ public class vols {
 
                 switch (opcio) {
                     case 1:
-                        System.out.println("Afegeix nous vols.");
+                        System.out.println("Afegeix nous restaurants.");
                         break;
 
                     case 2:
-                        System.out.println("Gestiona els vols.");
+                        System.out.println("Gestiona els restaurants.");
                         break;
 
                     case 3:
@@ -41,8 +41,7 @@ public class vols {
                         sortir = true;
                         break;
                     default:
-                        System.out.println("Opció incorrecta");
-                        break;
+                        System.out.println("Opció incorrecta.");
                 }
             }
 
@@ -50,6 +49,6 @@ public class vols {
     }
 
     public static void getValue() {
-        vols();
+        restaurants();
     }
 }
