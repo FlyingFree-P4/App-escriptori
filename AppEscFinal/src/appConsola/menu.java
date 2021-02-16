@@ -2,6 +2,8 @@ package appConsola;
 
 import java.util.Scanner;
 import ofertes.*;
+import productes.*;
+import factures.*;
 
 public class menu {
     public static void main(String[] args) {
@@ -21,6 +23,7 @@ public class menu {
             System.out.println("| 3. Ofertes                |");
             System.out.println("|                           |");
             System.out.println("| 4. Surt                   |");
+            System.out.println("|                           |");
             System.out.println("|Tria una de les 3 opcions: |");
             System.out.println("-----------------------------");
             if (!teclat.hasNextInt()) {
@@ -32,11 +35,11 @@ public class menu {
                 switch (opcio) {
 
                     case 1:
-                        gestProd.getValue();
+                        menuProd.getValue();
                         break;
 
                     case 2:
-                        System.out.println("Has triat l'opció 2.");
+                        factures.getValue();
                         break;
 
                     case 3:
