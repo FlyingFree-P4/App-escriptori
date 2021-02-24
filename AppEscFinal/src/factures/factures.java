@@ -1,6 +1,7 @@
 package factures;
 
 import java.util.Scanner;
+import factures.ValidarComandes.*;
 
 public class factures {
     private static void factures() {
@@ -13,7 +14,7 @@ public class factures {
             System.out.println("|********FlyingFree*********|");
             System.out.println("_____________________________");
             System.out.println("|*********FACTURES**********|");
-            System.out.println("| 1. Validar factures       |");
+            System.out.println("| 1. Validar comandes       |");
             System.out.println("| 2. Comandes               |");
             System.out.println("| 3. Crear factura          |");
             System.out.println("|                           |");
@@ -30,7 +31,7 @@ public class factures {
 
                 switch (opcio) {
                     case 1:
-                        System.out.println("Valida factures.");
+                        validarcomandes.validarcomandes();
                         break;
 
                     case 2:
