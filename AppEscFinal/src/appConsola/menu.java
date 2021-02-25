@@ -2,7 +2,6 @@ package appConsola;
 
 import java.util.Scanner;
 import ofertes.*;
-import productes.*;
 import factures.*;
 
 public class menu {
@@ -18,11 +17,10 @@ public class menu {
             System.out.println("|********FlyingFree*********|");
             System.out.println("_____________________________");
             System.out.println("|*******Menu principal******|");
-            System.out.println("| 1. Productes              |");
-            System.out.println("| 2. Factures               |");
-            System.out.println("| 3. Ofertes                |");
+            System.out.println("| 1. Factures               |");
+            System.out.println("| 2. Ofertes                |");
             System.out.println("|                           |");
-            System.out.println("| 4. Surt                   |");
+            System.out.println("| 3. Surt                   |");
             System.out.println("|                           |");
             System.out.println("|Tria una de les 3 opcions: |");
             System.out.println("-----------------------------");
@@ -34,19 +32,16 @@ public class menu {
 
                 switch (opcio) {
 
-                    case 1:
-                        menuProd.getValue();
-                        break;
 
-                    case 2:
+                    case 1:
                         factures.getValue();
                         break;
 
-                    case 3:
+                    case 2:
                         ofertes.getValue();
                         break;
 
-                    case 4:
+                    case 3:
                         System.out.println("Has triat l'opció 4, adeu!");
                         sortir = true;
                         break;
