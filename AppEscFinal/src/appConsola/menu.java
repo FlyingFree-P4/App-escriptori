@@ -12,18 +12,30 @@ public class menu {
         int opcio;
 
         while (!sortir) {
-
-            System.out.println("_____________________________");
-            System.out.println("|********FlyingFree*********|");
-            System.out.println("_____________________________");
-            System.out.println("|*******Menu principal******|");
-            System.out.println("| 1. Factures               |");
-            System.out.println("| 2. Ofertes                |");
-            System.out.println("|                           |");
-            System.out.println("| 3. Surt                   |");
-            System.out.println("|                           |");
-            System.out.println("|Tria una de les 3 opcions: |");
-            System.out.println("-----------------------------");
+            System.out.println("   _________________________________________________");
+            System.out.println("   |						   |");
+            System.out.println("   |    ________________ * * * * ________________  |");
+            System.out.println("   |    \\	       *        *               /  |");
+            System.out.println("   | 	 \\________    *          *     ________/   |");
+            System.out.println("   |	  \\	     * FlyingFree *           /    |");
+            System.out.println("   |	   \\	     *            *          /     |");
+            System.out.println("   |        \\____     *	         *      ____/      |");
+            System.out.println("   |	     \\         *        *          /       |");
+            System.out.println("   |          \\__________* * * *__________/        |");
+            System.out.println("   |						   |");
+            System.out.println("   |						   |");
+            System.out.println("   |_______________________________________________|");
+            System.out.println("   |*****************Menu principal****************|");
+            System.out.println("   |						   |");
+            System.out.println("   |            1. Factures                        |");
+            System.out.println("   |            2. Ofertes                         |");
+            System.out.println("   |                                               |");
+            System.out.println("   |            3. Surt                            |");
+            System.out.println("   |                                               |");
+            System.out.println("   |_______________________________________________|");
+            System.out.println("   |						   |");
+            System.out.println("   |           Tria una de les 3 opcions:          |");
+            System.out.println("   |_______________________________________________|");
             if (!teclat.hasNextInt()) {
                 System.out.println("Has d'introduir un nº com a opció");
                 teclat.next();
@@ -31,7 +43,6 @@ public class menu {
                 opcio = teclat.nextInt();
 
                 switch (opcio) {
-
 
                     case 1:
                         factures.getValue();

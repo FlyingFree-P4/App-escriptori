@@ -9,17 +9,30 @@ public class ofertes {
         boolean sortir = false;
 
         while (!sortir) {
-            System.out.println("_____________________________");
-            System.out.println("|********FlyingFree*********|");
-            System.out.println("_____________________________");
-            System.out.println("|*********OFERTES***********|");
-            System.out.println("| 1. Afegeix nova oferta    |");
-            System.out.println("| 2. Borra una oferta       |");
-            System.out.println("|                           |");
-            System.out.println("| 3. Tornar enrere          |");
-            System.out.println("|                           |");
-            System.out.println("| Gestiona els productes    |");
-            System.out.println("-----------------------------");
+            System.out.println("   _________________________________________________");
+            System.out.println("   |						   |");
+            System.out.println("   |    ________________ * * * * ________________  |");
+            System.out.println("   |    \\	       *        *               /  |");
+            System.out.println("   | 	 \\________    *          *     ________/   |");
+            System.out.println("   |	  \\	     * FlyingFree *           /    |");
+            System.out.println("   |	   \\	     *            *          /     |");
+            System.out.println("   |        \\____     *	         *      ____/      |");
+            System.out.println("   |	     \\         *        *          /       |");
+            System.out.println("   |          \\__________* * * *__________/        |");
+            System.out.println("   |						   |");
+            System.out.println("   |						   |");
+            System.out.println("   |_______________________________________________|");
+            System.out.println("   |********************OFERTES********************|");
+            System.out.println("   |						   |");
+            System.out.println("   |            1. Afegeix nova oferta             |");
+            System.out.println("   |            2. Borra una oferta                |");
+            System.out.println("   |                                               |");
+            System.out.println("   |            3. Tornar enrere                   |");
+            System.out.println("   |                                               |");
+            System.out.println("   |_______________________________________________|");
+            System.out.println("   |						   |");
+            System.out.println("   |           Tria una de les 3 opcions:          |");
+            System.out.println("   |_______________________________________________|");
 
             if (!teclat.hasNextInt()) {
                 System.out.println("Has d'introduir un nº com a opció.");
