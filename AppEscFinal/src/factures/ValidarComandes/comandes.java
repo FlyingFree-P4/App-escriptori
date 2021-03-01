@@ -6,48 +6,54 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import App_Consola.MysqlCon;
+
 public class comandes {
-    public static void comandes (){
+
+    private static MysqlCon conexio;
+
+    public static void comandes() {
         Scanner teclat = new Scanner(System.in);
-        
-              try {
 
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/flyingfree", "root", "");
-                Statement st = con.createStatement();
+        try {
 
-                System.out.println("Introdueix el ID de la comanda: ");
-                int comanda = teclat.nextInt();
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/flyingfree", "root", "");
+            Statement st = con.createStatement();
 
-                String verificar = "SELECT * FROM comanda WHERE ID_comanda = " + comanda + ";";
+            System.out.println("Introdueix el ID de la comanda: ");
+            int comanda = teclat.nextInt();
 
-                ResultSet rs = st.executeQuery(verificar);
+            String verificar = "SELECT * FROM comanda WHERE ID_comanda = " + comanda + ";";
 
-                if (rs.next()) {
-               //     System.out.println("Perfecte, la comanda existeix!");
-                    
-               String gestioProductes = "SELECT * from detalls_factura INNER JOIN"
-                       + " productes ON detalls_factura.IDProducte = productes.IDProducte;" ;
-               ResultSet gestioRs = st.executeQuery(gestioProductes);
-               
-                while(gestioRs.next()){
-                     System.out.println(" IDComanda:"+gestioRs.getString("ID_comanda") );
-                     System.out.println(" IDProducte: " + gestioRs.getString("IDProducte"));
-                     System.out.println(" NomProducte: " + gestioRs.getString("NomProd"));
-                     System.out.println(" Destí: " + gestioRs.getString("Desti"));
-                     System.out.println(" Preu: " + gestioRs.getString("Preu")+"€");
-                    
-                     
-                }
-               
+            ResultSet rs = st.executeQuery(verificar);
 
-                } else {
-                    System.out.println("!!!La comanda no existeix!!!");
+            if (rs.next()) {
+
+                String gestioProductes = "SELECT * FROM detalls_factura INNER JOIN"
+                        + " productes ON detalls_factura.IDProducte = productes.IDProducte AND detalls_factura.ID_comanda = "
+                        + comanda + ";";
+                ResultSet gestioRs = st.executeQuery(gestioProductes);
+
+                while (gestioRs.next()) {
+                    System.out.println(" IDComanda:" + gestioRs.getString("ID_comanda"));
+                    System.out.println(" IDProducte: " + gestioRs.getString("IDProducte"));
+                    System.out.println(" NomProducte: " + gestioRs.getString("NomProd"));
+                    System.out.println(" Destí: " + gestioRs.getString("Desti"));
+                    System.out.println(" Dia: " + gestioRs.getString("Dia"));
+                    System.out.println(" Hora: " + gestioRs.getString("Hora"));
+                    System.out.println(" Preu: " + gestioRs.getString("Preu") + "€");
+                    System.out.println(" Facturat: " + gestioRs.getBoolean("facturat"));
+                    System.out.println("");
+
                 }
 
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+            } else {
+                System.out.println("!!!La comanda no existeix!!!");
             }
-           
-        
-    } 
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    }
 }
