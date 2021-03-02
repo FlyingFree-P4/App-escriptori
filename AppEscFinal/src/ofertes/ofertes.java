@@ -39,7 +39,6 @@ public class ofertes {
                 teclat.next();
             } else {
                 opcio = teclat.nextInt();
-
                 switch (opcio) {
                     case 1:
                         System.out.println("Afegeix nova oferta.");
