@@ -24,7 +24,6 @@ public class comandes {
             int comanda = teclat.nextInt();
 
             String verificar = "SELECT * FROM comanda WHERE ID_comanda = " + comanda + ";";
-
             ResultSet rs = st.executeQuery(verificar);
 
             if (rs.next()) {
