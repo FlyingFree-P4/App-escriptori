@@ -41,7 +41,6 @@ public class menu {
                 teclat.next();
             } else {
                 opcio = teclat.nextInt();
-
                 switch (opcio) {
 
                     case 1:
