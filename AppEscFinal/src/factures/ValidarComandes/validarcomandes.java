@@ -14,7 +14,6 @@ public class validarcomandes {
         Scanner teclat = new Scanner(System.in);
         int opcio;
         boolean sortir = false;
-
         char[] lletraDni = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',
                 'H', 'L', 'C', 'K', 'E' };
         String dniNum = "";
