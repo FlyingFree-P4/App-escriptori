@@ -14,9 +14,6 @@ public class validarcomandes {
         Scanner teclat = new Scanner(System.in);
         int opcio;
         boolean sortir = false;
-        char[] lletraDni = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',
-                'H', 'L', 'C', 'K', 'E' };
-        String dniNum = "";
 
         while (!sortir) {
 
@@ -42,64 +39,11 @@ public class validarcomandes {
                     System.out.println("Insereix el DNI:");
 
                     String dni = teclat.next();
-                    boolean dniCorrecte = true;
 
-                    if (dni.length() != 9) {
-                        System.out.println("El DNI ha de contenir 9 caracters");
+                    if (validarcomandes.validaDNI(dni)) {
+                        System.out.println("Dni correcte");
                     } else {
-                        char ult = dni.charAt(dni.length() - 1);
-
-                        if (ult >= 'a' && ult <= 'z') {
-                            ult -= 32;
-                        }
-
-                        if (ult >= 'A' && ult <= 'Z') {
-                            for (int i = 0; i < 8; i++) {
-                                if (dni.charAt(i) < '0' || dni.charAt(i) > '9') {
-                                    System.out.println("Les 8 primeres posicions han de ser numèriques");
-                                    dniCorrecte = false;
-                                    break;
-                                }
-                            }
-
-                            char lletra = 0;
-
-                            if (dniCorrecte) {
-
-                                dni = dni.substring(0, dni.length() - 1);
-
-                                int dniInte = Integer.parseInt(dni);
-                                int reste = dniInte % 23;
-
-                                if (ult == lletraDni[reste]) {
-                                    System.out.println("El DNI s'ha validat correctament");
-
-                                    try {
-                                        Connection conn = DriverManager
-                                                .getConnection("jdbc:mysql://localhost:3306/flyingfree", "root", "");
-                                        Statement stmt = conn.createStatement();
-
-                                        String verificarDNI = "SELECT * FROM comanda WHERE ID_comanda = " + comanda
-                                                + " AND DNI = " + dni + ";";
-
-                                        ResultSet rs2 = st.executeQuery(verificarDNI);
-
-                                        if (rs2.next()) {
-                                            System.out.println("El DNI coincideix amb la comanda");
-                                        } else {
-                                            System.out.println("El DNI no coincideix amb la comanda");
-                                        }
-                                    } catch (Exception e) {
-                                        // TODO: handle exception
-                                    }
-
-                                } else {
-                                    System.out.println("Aquest DNI no és correcte, torna a intentar.");
-                                }
-                            }
-                        } else {
-                            System.out.println("La última posició ha de ser una lletra");
-                        }
+                        System.out.println("Dni incorrecte");
                     }
 
                 } else {
@@ -115,8 +59,70 @@ public class validarcomandes {
 
     }
 
-    public boolean checkIdCom(int comanda) {
+    public static boolean validaDNI(String dni) {
 
+        char[] lletraDni = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',
+                'H', 'L', 'C', 'K', 'E' };
+        String dniNum = "";
+
+        boolean dniCorrecte = true;
+
+        if (dni.length() != 9) {
+            return false;
+        } else {
+            char ult = dni.charAt(dni.length() - 1);
+
+            if (ult >= 'a' && ult <= 'z') {
+                ult -= 32;
+            }
+
+            if (ult >= 'A' && ult <= 'Z') {
+                for (int i = 0; i < 8; i++) {
+                    if (dni.charAt(i) < '0' || dni.charAt(i) > '9') {
+                        dniCorrecte = false;
+                        return false;
+                    }
+                }
+
+                char lletra = 0;
+
+                if (dniCorrecte) {
+
+                    dni = dni.substring(0, dni.length() - 1);
+
+                    int dniInte = Integer.parseInt(dni);
+                    int reste = dniInte % 23;
+
+                    if (ult == lletraDni[reste]) {
+                        System.out.println("El DNI s'ha validat correctament");
+
+                        try {
+                            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/flyingfree",
+                                    "root", "");
+                            Statement stmt = conn.createStatement();
+
+                            String verificarDNI = "SELECT * FROM comanda WHERE ID_comanda = " + comanda + " AND DNI = "
+                                    + dni + ";";
+
+                            ResultSet rs2 = stmt.executeQuery(verificarDNI);
+
+                            if (rs2.next()) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                        }
+
+                    } else {
+                        return false;
+                    }
+                }
+            } else {
+                return false;
+            }
+        }
         return true;
     }
 
