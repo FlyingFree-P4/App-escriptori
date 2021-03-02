@@ -10,7 +10,6 @@ public class MysqlCon {
     public static void main(String[] args) {
 
         connection();
-
     }
 
     // Assignació de variables per accedir a la bd
