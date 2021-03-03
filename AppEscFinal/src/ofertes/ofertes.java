@@ -1,6 +1,7 @@
 package ofertes;
 
 import java.util.Scanner;
+import ofertes.gestionarOfertes.*;
 
 public class ofertes {
     private static void ofertes() {
@@ -41,7 +42,7 @@ public class ofertes {
                 opcio = teclat.nextInt();
                 switch (opcio) {
                     case 1:
-                        System.out.println("Afegeix nova oferta.");
+                        inseriroferta.inseriroferta();
                         break;
 
                     case 2:
