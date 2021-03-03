@@ -1,6 +1,5 @@
 package factures;
 
-import factures.ValidarComandes.*;
 import java.util.Scanner;
 import factures.ValidarComandes.*;
 
