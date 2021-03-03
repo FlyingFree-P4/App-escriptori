@@ -7,11 +7,11 @@ import App_Consola.MysqlCon;
 
 public class validarcomandes {
 
+    static Scanner teclat = new Scanner(System.in);
     private static MysqlCon conexio;
 
     public static void validarcomandes() {
 
-        Scanner teclat = new Scanner(System.in);
         int opcio;
         boolean sortir = false;
 
@@ -41,9 +41,9 @@ public class validarcomandes {
                     String dni = teclat.next();
 
                     if (validarcomandes.validaDNI(dni)) {
-                        System.out.println("Dni correcte");
+                        System.out.println("El DNI coincideix amb la comanda");
                     } else {
-                        System.out.println("Dni incorrecte");
+                        System.out.println("El DNI no coincideix amb la comanda");
                     }
 
                 } else {
@@ -64,6 +64,8 @@ public class validarcomandes {
         char[] lletraDni = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',
                 'H', 'L', 'C', 'K', 'E' };
         String dniNum = "";
+        // System.out.println("Insereix la comanda: ");
+        // int comanda = teclat.nextInt();
 
         boolean dniCorrecte = true;
 
@@ -95,7 +97,9 @@ public class validarcomandes {
 
                     if (ult == lletraDni[reste]) {
                         System.out.println("El DNI s'ha validat correctament");
-
+                        System.out
+                                .println("Torna a inserir el ID de la comanda per analitzar si coincideix amb el DNI.");
+                        int comanda = teclat.nextInt();
                         try {
                             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/flyingfree",
                                     "root", "");
