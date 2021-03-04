@@ -16,49 +16,6 @@ public class inseriroferta {
 
     public static void inseriroferta() {
 
-        // try {
-        // Connection con =
-        // DriverManager.getConnection("jdbc:mysql://localhost:3306/flyingfree", "root",
-        // "");
-        // Statement st = con.createStatement(inserirOfertes);
-
-        // String idOf;
-        // String nomOf;
-        // String descompte;
-        // String datainici;
-        // String datafi;
-
-        // System.out.println("Procedim a incerir una oferta!");
-
-        // System.out.println("Quin serà l'ID?");
-        // idOf = teclat.next();
-
-        // System.out.println("Quin nom tindrà l'oferta?");
-        // nomOf = teclat.next();
-
-        // System.out.println("Quina quantitat de descompte farà? (sense el caracter
-        // %)");
-        // descompte = teclat.next();
-
-        // System.out.println("Quina és la seva data d'inici?");
-        // datainici = teclat.next();
-
-        // System.out.println("I la de fi?");
-        // datafi = teclat.next();
-
-        // String inserirOfertes = "INSERT INTO ofertes VALUES (" + idOf + ", " + nomOf
-        // + ", " + descompte + "); ";
-        // String inserirDataInici = "INSERT INTO data VALUES (" + datainici + ");";
-        // String inserirDataFi = "INSERT INTO te VALUES (" + idOf + ", " + datainici +
-        // ", " + datafi + ");";
-        // ResultSet rs = st.executeQuery(inserirOfertes);
-        // ResultSet rs2 = st.executeQuery(inserirDataInici);
-        // ResultSet rs3 = st.executeQuery(inserirDataFi);
-
-        // } catch (Exception e) {
-        // // TODO: handle exception
-        // }
-
         Connection con = null;
         Scanner sc = null;
         PreparedStatement ps = null;
@@ -75,7 +32,8 @@ public class inseriroferta {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/flyingfree", "root", "");
 
             if (con != null) {
-                ps = con.prepareStatement("INSERT INTO ofertes (ID_ofertes, Nom_oferta, Quant_Descompte) VALUES (?,?,?)");
+                ps = con.prepareStatement(
+                        "INSERT INTO ofertes (ID_ofertes, Nom_oferta, Quant_Descompte) VALUES (?,?,?)");
                 ps1 = con.prepareStatement("INSERT INTO data (Data_inici) VALUES (?)");
                 ps2 = con.prepareStatement("INSERT INTO te (ID_Ofertes, Data_inici, Data_fi) VALUES (?,?,?)");
                 if (ps != null && ps1 != null && ps2 != null && sc != null) {
@@ -104,15 +62,13 @@ public class inseriroferta {
                         ps2.setString(2, dataInici);
                         ps2.setString(3, dataFi);
 
-                        // System.out.println(idOf + nomOf+ descompte + dataInici+ dataFi);
-
                         int res = ps.executeUpdate();
                         int res1 = ps1.executeUpdate();
                         int res2 = ps2.executeUpdate();
                         if (res == 0 && res1 == 0 && res2 == 0) {
-                            System.out.println("La comanda " + i + " no s'ha inserit.");
+                            System.out.println("La oferta " + i + " no s'ha inserit.");
                         } else {
-                            System.out.println("La comanda " + i + " s'ha inserit correctament.");
+                            System.out.println("La oferta " + i + " s'ha inserit correctament.");
                         }
                     }
                 }
@@ -136,6 +92,5 @@ public class inseriroferta {
                 se1.printStackTrace();
             }
         }
-
     }
 }
