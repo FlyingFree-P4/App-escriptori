@@ -46,18 +46,18 @@ public class ofertes {
                         break;
 
                     case 2:
-                        System.out.println("Borra una oferta.");
+                        eliminarofertes.eliminarofertes();
                         break;
 
                     case 3:
                         System.out.println("Has tornat enrere.");
                         sortir = true;
                         break;
+
                     default:
                         System.out.println("Opció incorrecta");
                 }
             }
-
         }
     }
 
