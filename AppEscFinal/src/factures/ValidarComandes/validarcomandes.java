@@ -1,5 +1,7 @@
+// Codi per a fer la validació de les comandes i que coincidi amb el dni del client
 package factures.ValidarComandes;
 
+// Impots necessaris per aquest codi (SQL per fer totes les funcions per a la conexió, selects... de la bd)
 import java.util.Scanner;
 import java.lang.Thread.State;
 import java.sql.*;
@@ -7,12 +9,13 @@ import App_Consola.MysqlCon;
 
 public class validarcomandes {
 
+    // En aquest cas declarem el teclat com a scanner I STATIC per que sigui clobal,
+    // que no faci falta tornar a declarar-lo a altres métodes d'aquest codi
     static Scanner teclat = new Scanner(System.in);
     private static MysqlCon conexio;
 
     public static void validarcomandes() {
 
-        int opcio;
         boolean sortir = false;
 
         while (!sortir) {
@@ -23,17 +26,23 @@ public class validarcomandes {
             // validem dni
             try {
 
+                // creem les variables de conexió a base de dades i el statement per cridar-lo a
+                // continuació
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/flyingfree", "root", "");
                 Statement st = con.createStatement();
 
                 System.out.println("Introdueix el ID de la comanda: ");
                 int comanda = teclat.nextInt();
 
+                // Variable de la consulta a la bd de la id comanda
                 String verificar = "SELECT * FROM comanda WHERE ID_comanda = " + comanda + ";";
 
+                // Execució del statement preparat(conexió) amb la consulta
                 ResultSet rs = st.executeQuery(verificar);
 
                 if (rs.next()) {
+                    // Verifiquem si el resultat que ens dona és correcte, seguim am el codi de la
+                    // validació del dni
                     System.out.println("Perfecte, la comanda existeix!");
                     System.out.println("Procedim a validar el DNI.");
                     System.out.println("Insereix el DNI:");

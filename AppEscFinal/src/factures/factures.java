@@ -1,3 +1,4 @@
+// Codi per a la pantalla de factures
 package factures;
 
 import java.util.Scanner;
@@ -65,6 +66,7 @@ public class factures {
         }
     }
 
+    // Creem un métode per a que el poguem cridar des del menú
     public static void getValue() {
         factures();
     }

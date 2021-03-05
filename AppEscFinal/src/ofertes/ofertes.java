@@ -1,3 +1,4 @@
+// Codi per a la pantalla d'ofertes
 package ofertes;
 
 import java.util.Scanner;
@@ -61,6 +62,7 @@ public class ofertes {
         }
     }
 
+    // Creem un métode per a que el poguem cridar des del menú
     public static void getValue() {
         ofertes();
     }
