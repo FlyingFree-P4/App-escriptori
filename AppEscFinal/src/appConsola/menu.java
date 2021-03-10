@@ -56,25 +56,25 @@ public class menu {
                 opcio = teclat.nextInt();
                 switch (opcio) {
 
-                    case 1:
-                        factures.getValue();
-                        break;
+                case 1:
+                    factures.getValue();
+                    break;
 
-                    case 2:
-                        ofertes.getValue();
-                        break;
+                case 2:
+                    ofertes.getValue();
+                    break;
 
-                    case 3:
-                        System.out.println("Has triat l'opció 3, adeu!");
-                        sortir = true;
-                        break;
-                    // Donem el valor true a sortir per a que tanqui el programa. Com hem esmentat
-                    // abans, fins que sortir continui sent fals, segueixi amb el codi fins que
-                    // sigui true
-                    default:
-                        System.out.println("Opció incorrecta.");
-                        // Ens dona un missatge d'opció incorrecta per que si seleccionem un nº més gran
-                        // que 3 o que no oferim, no doni cap resultat exepte aquest missatge
+                case 3:
+                    System.out.println("Has triat l'opció 3, adeu!");
+                    sortir = true;
+                    break;
+                // Donem el valor true a sortir per a que tanqui el programa. Com hem esmentat
+                // abans, fins que sortir continui sent fals, segueixi amb el codi fins que
+                // sigui true
+                default:
+                    System.out.println("Opció incorrecta.");
+                    // Ens dona un missatge d'opció incorrecta per que si seleccionem un nº més gran
+                    // que 3 o que no oferim, no doni cap resultat exepte aquest missatge
 
                 }
             }

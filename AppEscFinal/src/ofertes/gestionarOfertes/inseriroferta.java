@@ -1,3 +1,4 @@
+// Codi per a la inserció d'ofertes a la bd
 package ofertes.gestionarOfertes;
 
 import java.util.Date;
@@ -16,6 +17,8 @@ public class inseriroferta {
 
     public static void inseriroferta() {
 
+        // A diferencia d'altres codis, aquesta vegada declarem aquestes variables coma
+        // null per no deixar-les "buides"
         Connection con = null;
         Scanner sc = null;
         PreparedStatement ps = null;
@@ -23,6 +26,7 @@ public class inseriroferta {
         PreparedStatement ps2 = null;
 
         try {
+            // Opció de donar quantes ofertes és vol inserir en aquell moment 1-infinit
             sc = new Scanner(System.in);
             int n = 0;
             if (sc != null) {
@@ -31,12 +35,22 @@ public class inseriroferta {
             }
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/flyingfree", "root", "");
 
+            // Al treballar amb més d'una taula, hem creat 3 prepared statements per a les
+            // diferentes insersions a les taules: Ofertes (ID, nom i descompte)
+            // Data (data d'inici)
+            // te (ID oferta, data inici i data fi)
+
             if (con != null) {
                 ps = con.prepareStatement(
                         "INSERT INTO ofertes (ID_ofertes, Nom_oferta, Quant_Descompte) VALUES (?,?,?)");
                 ps1 = con.prepareStatement("INSERT INTO data (Data_inici) VALUES (?)");
                 ps2 = con.prepareStatement("INSERT INTO te (ID_Ofertes, Data_inici, Data_fi) VALUES (?,?,?)");
                 if (ps != null && ps1 != null && ps2 != null && sc != null) {
+                    // Al demanar abans quantes ofertes volem inserir, és crearà el següent codi
+                    // tantes vegades com hem seleccionat abans
+
+                    // També aqui agafem totes les dades per teclat on desprès declarem els
+                    // paràmetres als prepared statements
                     for (int i = 1; i <= n; i++) {
                         System.out.println("Insereix la oferta nº" + i);
                         System.out.println("Insereix el ID: ");
@@ -54,6 +68,11 @@ public class inseriroferta {
                         System.out.println("Insereix la data de fi de l'oferta: ");
                         String dataFi = sc.next();
 
+                        // Fixan't-nos amb les linies d'insersió dels ps, ps1 i ps2, veiem que a values
+                        // tenim posats '?', llavors aqui diem quins valors volem inserir des del teclat
+                        // a cada '?'
+                        // Sent el ps tenimm que al primer '?' és idOf (ID ofertes), al segon '?'
+                        // nomOf(nomOfertes) i aixì amb cada
                         ps.setString(1, idOf);
                         ps.setString(2, nomOf);
                         ps.setInt(3, descompte);
@@ -62,6 +81,8 @@ public class inseriroferta {
                         ps2.setString(2, dataInici);
                         ps2.setString(3, dataFi);
 
+                        // Amb execute update fem que la funció d'insert és realitzi i que "actualitzi"
+                        // la taula amb les dades que hem inserit
                         int res = ps.executeUpdate();
                         int res1 = ps1.executeUpdate();
                         int res2 = ps2.executeUpdate();

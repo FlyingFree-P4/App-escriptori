@@ -43,23 +43,23 @@ public class factures {
             } else {
                 opcio = teclat.nextInt();
                 switch (opcio) {
-                    case 1:
-                        validarcomandes.validarcomandes();
-                        break;
+                case 1:
+                    validarcomandes.validarcomandes();
+                    break;
 
-                    case 2:
-                        comandes.comandes();
-                        break;
+                case 2:
+                    comandes.comandes();
+                    break;
 
-                    case 3:
-                        System.out.println("Crea factura.");
-                        break;
-                    case 4:
-                        System.out.println("Has tornat enrere.");
-                        sortir = true;
-                        break;
-                    default:
-                        System.out.println("Opció incorrecta");
+                case 3:
+                    facturar.factures();
+                    break;
+                case 4:
+                    System.out.println("Has tornat enrere.");
+                    sortir = true;
+                    break;
+                default:
+                    System.out.println("Opció incorrecta");
                 }
             }
 
