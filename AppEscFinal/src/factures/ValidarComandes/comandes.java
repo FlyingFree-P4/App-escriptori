@@ -50,9 +50,7 @@ public class comandes {
                     System.out.println(" Preu: " + gestioRs.getString("Preu") + "€");
                     System.out.println(" Facturat: " + gestioRs.getBoolean("facturat"));
                     System.out.println("");
-
                 }
-
             } else {
                 System.out.println("!!!La comanda no existeix!!!");
             }
@@ -61,6 +59,5 @@ public class comandes {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-
     }
 }

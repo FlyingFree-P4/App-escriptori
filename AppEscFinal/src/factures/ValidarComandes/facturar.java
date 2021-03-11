@@ -5,11 +5,15 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+
+import com.mysql.cj.protocol.Resultset;
+import com.mysql.cj.xdevapi.Result;
 
 public class facturar {
     public static void factures() {
@@ -20,6 +24,7 @@ public class facturar {
             Scanner teclat = new Scanner(System.in);
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/flyingfree", "root", "");
             Statement st = con.createStatement();
+            Statement st1 = con.createStatement();
 
             System.out.println("Introdueix el ID de la comanda: ");
 
@@ -27,29 +32,37 @@ public class facturar {
             String verificar = "SELECT * FROM comanda WHERE ID_comanda = " + comanda + ";";
             ResultSet rs = st.executeQuery(verificar);
 
-            if (rs.next()) {
+            System.out.println("Insereix l'ID de la oferta");
+            String ofertaSel = teclat.nextLine();
+            String consultar = "SELECT * FROM ofertes WHERE ID_ofertes = " + ofertaSel + ";";
+            ResultSet res = st1.executeQuery(consultar);
 
-                Statement st1 = con.createStatement();
+            if (rs.next() && res.next()) {
+
                 Statement st2 = con.createStatement();
                 Statement st3 = con.createStatement();
+                Statement st4 = con.createStatement();
+                Statement st5 = con.createStatement();
+                // PreparedStatement ps = null;
 
                 File factura = new File("factura" + comanda + ".txt");
                 factura.createNewFile();
 
                 String facturaSelect = "SELECT clients.DNI,Nom,Cognom,Correu FROM clients INNER JOIN "
                         + "comanda ON comanda.DNI = clients.DNI AND comanda.ID_comanda = " + comanda + ";";
-                ResultSet facturaRs = st1.executeQuery(facturaSelect);
+                ResultSet facturaRs = st2.executeQuery(facturaSelect);
 
                 String facturaSelect2 = "SELECT * FROM detalls_factura INNER JOIN"
                         + " productes ON detalls_factura.IDProducte = productes.IDProducte AND detalls_factura.ID_comanda = "
                         + comanda + ";";
-                ResultSet facturaRs2 = st2.executeQuery(facturaSelect2);
+                ResultSet facturaRs2 = st3.executeQuery(facturaSelect2);
 
                 String facturaSelect3 = "SELECT sum(Preu) FROM productes, comanda WHERE comanda.ID_comanda = " + comanda
-                        + " ;";
-                ResultSet facturaRs3 = st3.executeQuery(facturaSelect3);
+                        + ";";
+                ResultSet facturaRs3 = st4.executeQuery(facturaSelect3);
 
-                String preuTotal = facturaRs3.getString("sum(Preu)");
+                String ofertes = "SELECT Quant_Descompte FROM ofertes WHERE ID_ofertes = " + ofertaSel + ";";
+                ResultSet ofertaRs = st5.executeQuery(ofertes);
 
                 if (factura.exists()) {
                     FileWriter filewriter = new FileWriter(factura, true);
@@ -81,25 +94,27 @@ public class facturar {
                     pw.println("║                              ║");
 
                     if (facturaRs3.next()) {
-                        pw.println("║   Preu total: " + facturaRs3.getString("sum(Preu)") + "€        ║");
-
-                    }
-                    try {
-                        Double preu = Double.parseDouble(preuTotal.trim());
-
+                        Double preu = Double.parseDouble(facturaRs3.getString("sum(Preu)"));
+                        Double ofertaAplicable = Double.parseDouble(ofertaRs.getString("Quant_Descompte"));
                         if (preu > 0) {
-                            preu = preu + (preu * 0.21);
+                            preu = preu + (preu * 0.21) + (preu * ofertaAplicable / 100);
                         }
-
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("NumberFormatException: " + nfe.getMessage());
+                        pw.println("║   Preu sense IVA: " + facturaRs3.getString("sum(Preu)") + "€    ║");
+                        pw.println("║   Preu total: " + preu + "€        ║");
                     }
-                    pw.println("║ " + preu + " ║");
                     pw.println("║                              ║");
                     pw.println("║   " + dtf.format(now) + "        ║");
                     pw.println("║                             ©║");
                     pw.println("╚══════════════════════════════╝");
                     pw.close();
+
+                    // ps = con.prepareStatement("INSERT INTO factura (ID_comanda, ID_ofertes, DNI)
+                    // VALUES (?, ?, ?)");
+                    // if (ps != null) {
+                    // ps.setString(1, facturaRs.getString("ID_comanda"));
+                    // ps.setString(2, facturaRs.getString(""));
+                    // ps.setString(3, facturaRs.getString("clients.DNI"));
+                    // }
                 } else {
                     System.out.println("error");
                 }
@@ -109,6 +124,5 @@ public class facturar {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-
     }
 }
