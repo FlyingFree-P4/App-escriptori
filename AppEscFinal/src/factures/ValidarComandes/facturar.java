@@ -33,7 +33,7 @@ public class facturar {
             ResultSet rs = st.executeQuery(verificar);
 
             System.out.println("Insereix l'ID de la oferta");
-            String ofertaSel = teclat.nextLine();
+            int ofertaSel = teclat.nextInt();
             String consultar = "SELECT * FROM ofertes WHERE ID_ofertes = " + ofertaSel + ";";
             ResultSet res = st1.executeQuery(consultar);
 
@@ -57,8 +57,8 @@ public class facturar {
                         + comanda + ";";
                 ResultSet facturaRs2 = st3.executeQuery(facturaSelect2);
 
-                String facturaSelect3 = "SELECT sum(Preu) FROM productes, comanda WHERE comanda.ID_comanda = " + comanda
-                        + ";";
+                String facturaSelect3 = "SELECT sum(Preu) FROM productes, comanda, detalls_factura WHERE (comanda.ID_comanda = detalls_factura.ID_comanda AND detalls_factura.IDProducte = productes.IDProducte AND comanda.ID_comanda = "
+                        + comanda + ");";
                 ResultSet facturaRs3 = st4.executeQuery(facturaSelect3);
 
                 String ofertes = "SELECT Quant_Descompte FROM ofertes WHERE ID_ofertes = " + ofertaSel + ";";
@@ -93,15 +93,23 @@ public class facturar {
 
                     pw.println("║                              ║");
 
-                    if (facturaRs3.next()) {
+                    if (facturaRs3.next() && ofertaRs.next()) {
                         Double preu = Double.parseDouble(facturaRs3.getString("sum(Preu)"));
+                        Double preu2 = Double.parseDouble(facturaRs3.getString("sum(Preu)"));
                         Double ofertaAplicable = Double.parseDouble(ofertaRs.getString("Quant_Descompte"));
                         if (preu > 0) {
-                            preu = preu + (preu * 0.21) + (preu * ofertaAplicable / 100);
+                            preu = preu + (preu * 0.21);
                         }
+                        if (preu2 > 150) {
+                            preu2 = preu2 + (preu2 * 0.21) - (preu * ofertaAplicable / 100);
+                        }
+
                         pw.println("║   Preu sense IVA: " + facturaRs3.getString("sum(Preu)") + "€    ║");
-                        pw.println("║   Preu total: " + preu + "€        ║");
+                        pw.println("║   Preu sense oferta inclosa: " + preu + "€        ║");
+                        pw.println("║                              ║");
+                        pw.println("║   Preu total: " + preu2 + "€        ║");
                     }
+
                     pw.println("║                              ║");
                     pw.println("║   " + dtf.format(now) + "        ║");
                     pw.println("║                             ©║");

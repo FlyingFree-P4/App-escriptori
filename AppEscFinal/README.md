@@ -1,6 +1,6 @@
 ## Getting Started
 
-Ben vinguts al nostre projecte. Aquest codi de aqui és refereix a la app de la gestoria de vols, FlyingFree. 
+Benvinguts al nostre projecte. Aquest codi de aqui és refereix a la app de la gestoria de vols, FlyingFree. 
 Per a la escriptura i compilació dels codis hem fet servir 2 IDEs: NetBeans (Velizar i Maryan) i Visual Studio Code(Adrian).
 
 A continuació expliquem la estructura de les carpetes del projecte.

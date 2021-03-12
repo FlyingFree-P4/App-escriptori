@@ -54,7 +54,7 @@ public class inseriroferta {
                     for (int i = 1; i <= n; i++) {
                         System.out.println("Insereix la oferta nº" + i);
                         System.out.println("Insereix el ID: ");
-                        String idOf = sc.next();
+                        int idOf = sc.nextInt();
 
                         System.out.println("Insereix el nom de l'oferta: ");
                         String nomOf = sc.next();
@@ -73,11 +73,11 @@ public class inseriroferta {
                         // a cada '?'
                         // Sent el ps tenimm que al primer '?' és idOf (ID ofertes), al segon '?'
                         // nomOf(nomOfertes) i aixì amb cada
-                        ps.setString(1, idOf);
+                        ps.setInt(1, idOf);
                         ps.setString(2, nomOf);
                         ps.setInt(3, descompte);
                         ps1.setString(1, dataInici);
-                        ps2.setString(1, idOf);
+                        ps2.setInt(1, idOf);
                         ps2.setString(2, dataInici);
                         ps2.setString(3, dataFi);
 
