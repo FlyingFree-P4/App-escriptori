@@ -15,7 +15,7 @@ public class inseriroferta {
 
     static Scanner teclat = new Scanner(System.in);
 
-    public static void inseriroferta() {
+    public static boolean inseriroferta() {
 
         // A diferencia d'altres codis, aquesta vegada declarem aquestes variables coma
         // null per no deixar-les "buides"
@@ -113,5 +113,6 @@ public class inseriroferta {
                 se1.printStackTrace();
             }
         }
+        return true;
     }
 }

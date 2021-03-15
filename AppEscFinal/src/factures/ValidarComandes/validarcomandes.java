@@ -14,7 +14,7 @@ public class validarcomandes {
     static Scanner teclat = new Scanner(System.in);
     private static MysqlCon conexio;
 
-    public static void validarcomandes() {
+    public static boolean validarcomandes() {
 
         boolean sortir = false;
 
@@ -50,13 +50,16 @@ public class validarcomandes {
                     String dni = teclat.next();
 
                     if (validarcomandes.validaDNI(dni)) {
-                        System.out.println("El DNI coincideix amb la comanda");
+                        // System.out.println("El DNI coincideix amb la comanda");
+                        return true;
                     } else {
-                        System.out.println("El DNI no coincideix amb la comanda");
+                        // System.out.println("El DNI no coincideix amb la comanda");
+                        return false;
                     }
 
                 } else {
-                    System.out.println("!!!La comanda no existeix!!!");
+                    // System.out.println("!!!La comanda no existeix!!!");
+                    return false;
                 }
 
             } catch (Exception e) {
@@ -65,6 +68,7 @@ public class validarcomandes {
 
             sortir = true;
         }
+        return true;
 
     }
 

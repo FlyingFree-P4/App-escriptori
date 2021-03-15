@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class eliminarofertes {
     static Scanner teclat = new Scanner(System.in);
 
-    public static void eliminarofertes() {
+    public static boolean eliminarofertes() {
         // A diferencia d'altres codis, aquesta vegada declarem aquestes variables coma
         // null per no deixar-les "buides"
         Connection con = null;
@@ -86,5 +86,6 @@ public class eliminarofertes {
                 se1.printStackTrace();
             }
         }
+        return true;
     }
 }

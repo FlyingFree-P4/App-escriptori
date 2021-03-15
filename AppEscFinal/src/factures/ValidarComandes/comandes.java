@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class comandes {
 
-    public static void comandes() {
+    public static boolean comandes() {
         Scanner teclat = new Scanner(System.in);
 
         try {
@@ -48,16 +48,17 @@ public class comandes {
                     System.out.println(" Dia: " + gestioRs.getString("Dia"));
                     System.out.println(" Hora: " + gestioRs.getString("Hora"));
                     System.out.println(" Preu: " + gestioRs.getString("Preu") + "€");
-                    System.out.println(" Facturat: " + gestioRs.getBoolean("facturat"));
                     System.out.println("");
                 }
             } else {
-                System.out.println("!!!La comanda no existeix!!!");
+                return false;
             }
             // Totes les excepcions les agafem aqui i llavors ens dirà quin error d'excepció
             // tenim
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
+        return true;
     }
+
 }

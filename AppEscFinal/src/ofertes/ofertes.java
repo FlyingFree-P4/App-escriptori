@@ -5,7 +5,7 @@ import java.util.Scanner;
 import ofertes.gestionarOfertes.*;
 
 public class ofertes {
-    private static void ofertes() {
+    public static boolean ofertes() {
         Scanner teclat = new Scanner(System.in);
         int opcio;
         boolean sortir = false;
@@ -43,11 +43,19 @@ public class ofertes {
                 opcio = teclat.nextInt();
                 switch (opcio) {
                     case 1:
-                        inseriroferta.inseriroferta();
+                        if (inseriroferta.inseriroferta()) {
+                            System.out.println("Procedim a inserir ofertes");
+                        }else{
+                            System.out.println("Torna a intentar");
+                        }
                         break;
 
                     case 2:
-                        eliminarofertes.eliminarofertes();
+                        if (eliminarofertes.eliminarofertes()) {
+                            System.out.println("Procedim a borrar ofertes");
+                        } else{
+                            System.out.println("Torna a intentar");
+                        }
                         break;
 
                     case 3:
@@ -60,10 +68,6 @@ public class ofertes {
                 }
             }
         }
-    }
-
-    // Creem un métode per a que el poguem cridar des del menú
-    public static void getValue() {
-        ofertes();
+        return true;
     }
 }

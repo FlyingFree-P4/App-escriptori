@@ -57,11 +57,17 @@ public class menu {
                 switch (opcio) {
 
                 case 1:
-                    factures.getValue();
+                    if (factures.factures()) { 
+                    } else{
+                        System.out.println("Torna a intentar");
+                    }
                     break;
 
                 case 2:
-                    ofertes.getValue();
+                    if (ofertes.ofertes()) {
+                    }else{
+                        System.out.println("Torna a intentar");
+                    }
                     break;
 
                 case 3:
