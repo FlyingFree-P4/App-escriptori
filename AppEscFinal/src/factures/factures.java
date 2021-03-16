@@ -1,4 +1,4 @@
-// Codi per a la pantalla de factures
+// Codi per a la pantalla de factures.
 package factures;
 
 import java.util.Scanner;
@@ -44,7 +44,6 @@ public class factures {
                 opcio = teclat.nextInt();
                 switch (opcio) {
                 case 1:
-                    // validarcomandes.validarcomandes();
                     if (validarcomandes.validarcomandes()) {
                         System.out.println("La comanda existeix i el DNI és correcte");
                     } else {
@@ -55,17 +54,18 @@ public class factures {
                 case 2:
                     if (comandes.comandes()) {
                         System.out.println("Aquests són els productes de la comanda");
-                    } else{
+                    } else {
                         System.out.println("Hi ha hagut un error.");
                     }
                     break;
 
                 case 3:
-                    facturar.factures();
-                    if (facturar.factures()){
+                    System.out.println("Introdueix el ID de la comanda: ");
+                    int comanda = teclat.nextInt();
+                    if (facturar.factures(comanda)) {
                         System.out.println("Ja s'ha facturat la comanda");
-                    } else{
-                        System.out.println("La comanda no s'ha pogut crear");
+                    } else {
+                        System.out.println("La comanda no s'ha pogut crear, ja ha estat facturada");
                     }
                     break;
                 case 4:
