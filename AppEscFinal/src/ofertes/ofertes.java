@@ -1,4 +1,4 @@
-// Codi per a la pantalla d'ofertes
+// Codi per a la pantalla d'ofertes.
 package ofertes;
 
 import java.util.Scanner;
@@ -42,29 +42,29 @@ public class ofertes {
             } else {
                 opcio = teclat.nextInt();
                 switch (opcio) {
-                    case 1:
-                        if (inseriroferta.inseriroferta()) {
-                            System.out.println("Procedim a inserir ofertes");
-                        }else{
-                            System.out.println("Torna a intentar");
-                        }
-                        break;
+                case 1:
+                    if (inseriroferta.inseriroferta()) {
+                        System.out.println("Procedim a inserir ofertes");
+                    } else {
+                        System.out.println("Torna a intentar");
+                    }
+                    break;
 
-                    case 2:
-                        if (eliminarofertes.eliminarofertes()) {
-                            System.out.println("Procedim a borrar ofertes");
-                        } else{
-                            System.out.println("Torna a intentar");
-                        }
-                        break;
+                case 2:
+                    if (eliminarofertes.eliminarofertes()) {
+                        System.out.println("Procedim a borrar ofertes");
+                    } else {
+                        System.out.println("Torna a intentar");
+                    }
+                    break;
 
-                    case 3:
-                        System.out.println("Has tornat enrere.");
-                        sortir = true;
-                        break;
+                case 3:
+                    System.out.println("Has tornat enrere.");
+                    sortir = true;
+                    break;
 
-                    default:
-                        System.out.println("Opció incorrecta");
+                default:
+                    System.out.println("Opció incorrecta");
                 }
             }
         }
