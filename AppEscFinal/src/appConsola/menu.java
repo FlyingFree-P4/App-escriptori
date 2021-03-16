@@ -1,4 +1,4 @@
-// Codi principal de l'app d'escriptori.
+// Codi principal de l'app d'escriptori
 package appConsola;
 // Els imports que necessitem en aquest codi (Scanner per inserir per teclat, ofertes.ofertes i factures.factures per obtenir els valors d'aquell arxiu i poder cridar-lo)  
 
@@ -36,7 +36,7 @@ public class menu {
             System.out.println("   |_______________________________________________|");
             System.out.println("   |*****************Menu principal****************|");
             System.out.println("   |						   |");
-            System.out.println("   |            1. Factures                        |");
+            System.out.println("   |               1. Factures                     |");
             System.out.println("   |            2. Ofertes                         |");
             System.out.println("   |                                               |");
             System.out.println("   |            3. Surt                            |");
@@ -57,15 +57,15 @@ public class menu {
                 switch (opcio) {
 
                 case 1:
-                    if (factures.factures()) { 
-                    } else{
+                    if (factures.factures()) {
+                    } else {
                         System.out.println("Torna a intentar");
                     }
                     break;
 
                 case 2:
                     if (ofertes.ofertes()) {
-                    }else{
+                    } else {
                         System.out.println("Torna a intentar");
                     }
                     break;
