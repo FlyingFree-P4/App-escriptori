@@ -1,4 +1,4 @@
-// Codi per a veure els continguts de les comandes, els seus productes
+// Codi per a veure els continguts de les comandes, els seus productes.
 package factures.ValidarComandes;
 
 import java.sql.Connection;
