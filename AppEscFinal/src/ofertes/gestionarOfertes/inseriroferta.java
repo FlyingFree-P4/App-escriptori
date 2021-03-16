@@ -1,4 +1,4 @@
-// Codi per a la inserció d'ofertes a la bd
+// Codi per a la inserció d'ofertes a la bd.
 package ofertes.gestionarOfertes;
 
 import java.util.Date;
