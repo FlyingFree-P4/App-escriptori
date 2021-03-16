@@ -1,4 +1,4 @@
-// Codi per a la eliminació d'ofertes existents de la bd
+// Codi per a la eliminació d'ofertes existents de la bd.
 package ofertes.gestionarOfertes;
 
 import java.sql.Connection;
