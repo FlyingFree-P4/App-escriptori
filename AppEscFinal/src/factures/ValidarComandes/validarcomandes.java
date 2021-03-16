@@ -1,4 +1,4 @@
-// Codi per a fer la validació de les comandes i que coincidi amb el dni del client
+// Codi per a fer la validació de les comandes i que coincidi amb el dni del client.
 package factures.ValidarComandes;
 
 // Impots necessaris per aquest codi (SQL per fer totes les funcions per a la conexió, selects... de la bd)
